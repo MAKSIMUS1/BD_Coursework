@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Authenticate</title>
+</head>
+<body>
+<div class="registration-block">
+  <h1 class="h-50 text-center">Вход</h1>
+  <form method="post" class="flex-column" style="display: flex"
+        th:object="${authUserDto}"
+        th:action="@{/api/goalscore/authenticate}">
+    <div class="justify-content-md-center" style="margin-top: 20px">
+      <label class="form-group">
+        Login<br>
+        <input class="form-control" type="text" th:field="${authUserDto.login}">
+      </label>
+      <label class="form-group" style="margin-left: 30px">
+        Password<br>
+        <input class="form-control" type="text" th:field="${authUserDto.password}">
+      </label>
+    </div>
+    <input class="button-main-page" type="submit" value="Registration" />
+  </form>
+
+</div><br>
+<div th:if="${authenticateSuccess}" th:utext="succes"
+     style="color:green;font-style:italic;"/>
+<div th:if="${error}" th:utext="${error}"
+     style="color:red;font-style:italic;"/>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

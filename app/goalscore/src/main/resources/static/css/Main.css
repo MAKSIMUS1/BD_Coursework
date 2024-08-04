@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/static/images/Fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.match-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.match-card {
+    display: flex;
+    flex-direction: column;
+    width: 820px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-name {
+    font-weight: bold;
+}
+
+.score {
+    margin-left: 16px;
+    font-size: 18px;
+}
+
+.datetime {
+    color: #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.team-image {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.competition-name{
+    font-family: 'Poppins', sans-serif;
+}
+.team-info{
+    display: flex;
+    flex-direction: row;
+}
+.team-with-score{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.teams-in-match{
+    flex-wrap: wrap;
+    flex-direction: column;
+}

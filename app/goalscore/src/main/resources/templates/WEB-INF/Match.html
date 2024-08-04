@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/static/css/Match.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Match</h1>
+
+    <div th:if="${error}" class="error-message" th:utext="${error}"></div>
+
+    <div class="team-container">
+        <div class="team-card">
+            <div class="team-header">
+                <a th:href="@{'/team/' + ${home_team_id}}">
+                    <p class="team-name" th:text="${home_team_name}"></p>
+                    <img th:src="@{'/static/images/team_' + ${home_team_id} + '.png'}" alt="Home Team Image" class="team-image">
+                </a>
+            </div>
+            <div class="player-list">
+                <h2>Starting Players</h2>
+                <div th:each="player : ${home_start_players}" class="player-card">
+                    <p th:text="${player.name}"></p>
+                    <button class="btn btn-primary float-right" th:onclick="'addToFavorites(' + ${player.id} + ')'" type="button">Add to Favorites</button>
+                </div>
+            </div>
+            <div class="player-list">
+                <h2>Substitute Players</h2>
+                <div th:each="player : ${home_bench_players}" class="player-card">
+                    <p th:text="${player.name}"></p>
+                    <button class="btn btn-primary float-right" th:onclick="'addToFavorites(' + ${player.id} + ')'" type="button">Add to Favorites</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-header">
+                <a th:href="@{'/team/' + ${away_team_id}}">
+                    <p class="team-name" th:text="${away_team_name}"></p>
+                    <img th:src="@{'/static/images/team_' + ${away_team_id} + '.png'}" alt="Away Team Image" class="team-image">
+                </a>
+            </div>
+            <div class="player-list">
+                <h2>Starting Players</h2>
+                <div th:each="player : ${away_start_players}" class="player-card">
+                    <button class="btn btn-primary float-left" th:onclick="'addToFavorites(' + ${player.id} + ')'" type="button">Add to Favorites</button>
+                    <p th:text="${player.name}"></p>
+                </div>
+            </div>
+            <div class="player-list">
+                <h2>Substitute Players</h2>
+                <div th:each="player : ${away_bench_players}" class="player-card">
+                    <button class="btn btn-primary float-left" th:onclick="'addToFavorites(' + ${player.id} + ')'" type="button">Add to Favorites</button>
+                    <p th:text="${player.name}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="match-info">
+        <p th:text="'Date: ' + ${match_date}"></p>
+        <p th:text="'Competition: ' + ${competition_name}"></p>
+        <p th:text="'Score: ' + ${score}"></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function addToFavorites(playerId) {
+        const url = "/favourite/addToFavoritesPlayer";
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ playerId: playerId }),
+        };
+
+        fetch(url, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}.`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                console.error('Response Text:', error.responseText);
+            });
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

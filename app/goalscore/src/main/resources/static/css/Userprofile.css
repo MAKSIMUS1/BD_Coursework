@@ -1,0 +1,13 @@
+.profile-image {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+.profile-image img {
+    border: 25px solid #fafafa;
+    border-top-width: 35px;
+    border-bottom-width: 100px;
+    -webkit-box-shadow: 3px 3px 6px 4px #888;
+    -moz-box-shadow: 3px 3px 6px 4px #888;
+    box-shadow: 3px 3px 6px 4px #888;
+}

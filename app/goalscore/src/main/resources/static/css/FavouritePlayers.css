@@ -1,0 +1,23 @@
+.player-info-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.player-image{
+    width: 96px;
+    float: left;
+    margin: 0 0 3.5% 0;
+    background: #f0f0f0;
+    border-radius: 3px;
+    border: solid 2px #333333 ;
+    padding: 2%;
+}
+
+.player-nationality-image{
+    width: 48px;
+    height: 32px;
+}
+.player-team-image{
+    width: 90px;
+    height: 90px;
+}

@@ -1,0 +1,86 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Favorites</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" th:href="@{/static/css/FavouritePlayers.css}">
+    </head>
+    <body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Favorite Players</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Date of birth</th>
+                <th>Nationality</th>
+                <th>Team</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="player : ${favourite_players}">
+                <td class="player-info-container">
+                    <img class="player-image" th:src="'/static/images/player_'+ ${player.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+                    <p th:text="${player.name}"></p>
+                </td>
+                <td>
+                    <p th:text="${player.position}"></p>
+                </td>
+                <td>
+                    <p th:text="${player.date_of_birth}"></p>
+                </td>
+                <td class="player-info-container">
+                    <img class="player-nationality-image" th:src="'/static/images/Nations/'+ ${player.nationality} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+                    <p th:text="${player.nationality}"></p>
+                </td>
+                <td class="player-info-container">
+                    <img class="player-team-image" th:src="'/static/images/team_'+ ${player.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+                    <p th:text="${player.team_short_name}"></p>
+                </td>
+
+                <td>
+                    <button class="btn btn-danger" th:onclick="'removeFromFavorites(' + ${player.id} + ')'">Remove</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function removeFromFavorites(playerId) {
+            const url = `/favourite/removeFromFavorites`;
+
+            const options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ playerId: playerId }),
+            };
+
+            fetch(url, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}.`);
+                    }
+                    console.log('Player removed from favorites successfully');
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </body>
+    </html>

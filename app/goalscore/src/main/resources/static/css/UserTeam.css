@@ -1,0 +1,38 @@
+.football-peach{
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/images/team_field.png');
+    background-repeat: no-repeat;
+}
+.players-line{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+
+}
+.player-card{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 160px;
+    height: 200px;
+    background-image: url('/static/images/player_card.png');
+    background-repeat: no-repeat;
+}
+.player-image{
+    width: 56px;
+}
+.team-image{
+    width: 20px;
+}

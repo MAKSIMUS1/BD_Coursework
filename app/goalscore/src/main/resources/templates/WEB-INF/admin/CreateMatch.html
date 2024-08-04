@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Admin[Create Match]</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1>Admin[Create Match]</h1>
+
+  <!-- Создание матча -->
+  <div class="container mt-5">
+    <h2 class="mb-4">Match Form</h2>
+    <form th:action="@{/admin/create/match}"
+          th:object="${create_match}"
+          method="post">
+      <div class="form-group">
+        <label for="competition_id">Competition ID:</label>
+        <input type="number" class="form-control" id="competition_id" name="competition_id" th:field="*{competition_id}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="attendance">Attendance:</label>
+        <input type="number" class="form-control" id="attendance" name="attendance" th:field="*{attendance}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="home_match_team_id">Home Match Team ID:</label>
+        <input type="number" class="form-control" id="home_match_team_id" name="home_match_team_id" th:field="*{home_match_team_id}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="away_match_team_id">Away Match Team ID:</label>
+        <input type="number" class="form-control" id="away_match_team_id" name="away_match_team_id" th:field="*{away_match_team_id}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="home_goal_score">Home Goal Score:</label>
+        <input type="number" class="form-control" id="home_goal_score" name="home_goal_score" th:field="*{home_goal_score}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="away_goal_score">Away Goal Score:</label>
+        <input type="number" class="form-control" id="away_goal_score" name="away_goal_score" th:field="*{away_goal_score}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="match_date">Match Datetime:</label>
+        <input type="datetime-local" class="form-control" id="match_date" name="match_date" th:field="*{match_date}" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create Match</button>
+    </form>
+
+    <div th:if="${result}" th:utext="${result}"
+         style="color:green;font-style:italic;"/>
+    <div th:if="${error}" th:utext="${error}"
+         style="color:red;font-style:italic;"/>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

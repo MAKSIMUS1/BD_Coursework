@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Football Team Builder</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/static/css/UserTeam.css}">
+</head>
+<body>
+
+<div class="football-peach">
+  <div class="players-line">
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${lw.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${lw.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${lw.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${striker.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${striker.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${striker.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${rw.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${rw.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${rw.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+  </div>
+  <div class="players-line">
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${lm.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${lm.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${lm.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${cm.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${cm.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${cm.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${rm.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${rm.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${rm.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+  </div>
+  <div class="players-line">
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${ld.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${ld.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${ld.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${cdf.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${cdf.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${cdf.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${cds.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${cds.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${cds.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${rd.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${rd.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${rd.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+  </div>
+  <div class="players-line">
+    <div class="player-card">
+      <img class="player-image" th:src="'/static/images/player_'+ ${g.id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+      <p th:text="${g.name}"></p>
+      <img class="team-image" th:src="'/static/images/team_'+ ${g.team_id} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

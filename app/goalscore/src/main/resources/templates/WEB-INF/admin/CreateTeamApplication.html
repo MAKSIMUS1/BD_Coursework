@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Admin[Create Match Request]</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Admin Panel[Create Match Request]</h1>
+    <!-- Создание заявки на матч -->
+    <div class="card mb-3">
+        <div class="card-header">
+            Create Match Request
+        </div>
+        <div class="card-body">
+            <form th:action="@{/admin/create/team-application}"
+                  th:object="${create_teamApplicationDto}"
+                  method="post">
+                <label for="team_id">Team ID:</label>
+                <input type="text" id="team_id" name="team_id" th:field="*{team_id}" class="form-control" />
+
+                <label for="goalkeeper_id">Goalkeeper ID:</label>
+                <input type="text" id="goalkeeper_id" name="goalkeeper_id" th:field="*{goalkeeper_id}" class="form-control" />
+
+                <label for="left_defender_id">Left defender ID:</label>
+                <input type="text" id="left_defender_id" name="left_defender_id" th:field="*{left_defender_id}" class="form-control" />
+
+                <label for="central_1_defender_id">1 Central defender ID:</label>
+                <input type="text" id="central_1_defender_id" name="central_1_defender_id" th:field="*{central_1_defender_id}" class="form-control" />
+
+                <label for="central_2_defender_id">2 Central defender ID:</label>
+                <input type="text" id="central_2_defender_id" name="central_2_defender_id" th:field="*{central_2_defender_id}" class="form-control" />
+
+                <label for="right_defender_id">Right defender ID:</label>
+                <input type="text" id="right_defender_id" name="right_defender_id" th:field="*{right_defender_id}" class="form-control" />
+
+                <label for="left_midfielder_id">Left midfielder ID:</label>
+                <input type="text" id="left_midfielder_id" name="left_midfielder_id" th:field="*{left_midfielder_id}" class="form-control" />
+
+                <label for="central_midfielder_id">Central midfielder ID:</label>
+                <input type="text" id="central_midfielder_id" name="central_midfielder_id" th:field="*{central_midfielder_id}" class="form-control" />
+
+                <label for="right_midfielder_id">Right midfielder ID:</label>
+                <input type="text" id="right_midfielder_id" name="right_midfielder_id" th:field="*{right_midfielder_id}" class="form-control" />
+
+                <label for="left_winger_id">Left winger ID:</label>
+                <input type="text" id="left_winger_id" name="left_winger_id" th:field="*{left_winger_id}" class="form-control" />
+
+                <label for="striker_id">Striker ID:</label>
+                <input type="text" id="striker_id" name="striker_id" th:field="*{striker_id}" class="form-control" />
+
+                <label for="right_winger_id">Right winger ID:</label>
+                <input type="text" id="right_winger_id" name="right_winger_id" th:field="*{right_winger_id}" class="form-control" />
+
+                <label for="comment">Comment:</label>
+                <input type="text" id="comment" name="comment" th:field="*{comment}" class="form-control" />
+                <!-- Добавьте остальные поля здесь -->
+                <button type="submit" class="btn btn-primary">Create Team request</button>
+            </form>
+
+            <div th:if="${result}" th:utext="${result}"
+                 style="color:green;font-style:italic;"/>
+            <div th:if="${error}" th:utext="${error}"
+                 style="color:red;font-style:italic;"/>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8" />
+  <title>Goalscore</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/static/css/Main.css}">
+</head>
+<body>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Goalscore</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/user_profile}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/api/authenticate}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/api/registration}">Registration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/favourite}">Favourite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/players}">All players</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+<form class="form-inline my-2 my-lg-0" th:action="@{/search}" method="get">
+  <input class="form-control mr-sm-2" type="text" placeholder="Поиск" name="query">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<div class="match-container">
+  <div th:if="${matches}">
+    <div th:each="match : ${matches}">
+      <div class="match-card" th:id="${match.matchId}" th:attr="onclick='redirectToMatch(' + ${match.matchId} + ')'">
+        <div th:text="${match.competitionName}" class="competition-name"></div>
+        <div class="match-container">
+          <div class="datetime">
+            <div  th:text="${match.matchDatetime}"></div>
+          </div>
+          <div class="teams-in-match">
+            <div class="team-with-score">
+              <div class="team-info">
+                <img th:src="@{'/static/images/team_' + ${match.homeTeamId} + '.png'}" alt="Home Team Image" class="team-image">
+                <p class="team-name" th:text="${match.homeTeamName}"></p>
+              </div>
+              <div class="score" th:text="${match.homeGoal}"></div>
+            </div>
+            <div class="team-with-score">
+              <div class="team-info">
+                <img th:src="@{'/static/images/team_' + ${match.awayTeamId} + '.png'}" alt="Home Team Image" class="team-image">
+                <p class="team-name" th:text="${match.awayTeamName}"></p>
+              </div>
+              <div class="score" th:text="${match.awayGoal}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:if="${error}" th:utext="${error}"
+     style="color:red;font-style:italic;"/>
+
+<div th:if="${message}" th:utext="${message}"
+     style="color:green;font-style:italic;"/>
+
+<script type="text/javascript">
+  function redirectToMatch(matchId) {
+    window.location.href = '/matches/' + matchId;
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

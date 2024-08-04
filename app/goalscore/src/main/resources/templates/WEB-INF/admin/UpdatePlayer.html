@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Admin[Update Player]</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1>Admin Panel[Update Player]</h1>
+  <div class="card mb-3">
+    <div class="card-header">
+      Update Player
+    </div>
+    <div class="card-body">
+      <form th:action="@{/admin/update/player}"
+            th:object="${update_player}"
+            method="post">
+        <label for="id">Player ID:</label>
+        <input type="number" id="id" name="id" th:field="*{id}" class="form-control" />
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" class="form-control" />
+
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" th:field="*{position}" class="form-control" />
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" th:field="*{date_of_birth}" class="form-control" />
+
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" th:field="*{nationality}" class="form-control" />
+
+        <label for="team_id">Team ID:</label>
+        <input type="number" id="team_id" name="team_id" th:field="*{team_id}" class="form-control" />
+
+        <input type="hidden" name="_method" value="put" />
+
+        <button type="submit" class="btn btn-primary">Update Player</button>
+      </form>
+
+      <div th:if="${result}" th:utext="${result}"
+           style="color:green;font-style:italic;"/>
+      <div th:if="${error}" th:utext="${error}"
+           style="color:red;font-style:italic;"/>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Football Team Builder</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1>Football Team Builder</h1>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Your team</h2>
+    <form action="/favourite/build_team" method="post">
+
+      <div class="form-group">
+        <label for="goalkeeperSelect">Goalkeeper:</label>
+        <select id="goalkeeperSelect" name="goalkeeper" class="form-control">
+          <option th:each="goalkeeper : ${goalkeepers}"  th:value="${goalkeeper.id}" th:text="${goalkeeper.name}"></option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="leftDefenderSelect">Left defender:</label>
+        <select id="leftDefenderSelect" name="leftDefender" class="form-control">
+          <option th:each="defender : ${defenders}" th:value="${defender.id}" th:text="${defender.name}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="central1DefenderSelect">Central(1) defender:</label>
+        <select id="central1DefenderSelect" name="central1Defender" class="form-control">
+          <option th:each="defender : ${defenders}" th:value="${defender.id}" th:text="${defender.name}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="central2DefenderSelect">Central(2) defender:</label>
+        <select id="central2DefenderSelect" name="central2Defender" class="form-control">
+          <option th:each="defender : ${defenders}" th:value="${defender.id}" th:text="${defender.name}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="rightDefenderSelect">Right defender:</label>
+        <select id="rightDefenderSelect" name="rightDefender" class="form-control">
+          <option th:each="defender : ${defenders}" th:value="${defender.id}" th:text="${defender.name}"></option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="leftMidfielderSelect">Left midfielder:</label>
+        <select id="leftMidfielderSelect" name="leftMidfielder" class="form-control">
+          <option th:each="midfielder : ${midfielders}" th:value="${midfielder.id}" th:text="${midfielder.name}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="centralMidfielderSelect">Central midfielder:</label>
+        <select id="centralMidfielderSelect" name="centralMidfielder" class="form-control">
+          <option th:each="midfielder : ${midfielders}" th:value="${midfielder.id}" th:text="${midfielder.name}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="rightMidfielderSelect">Right midfielder:</label>
+        <select id="rightMidfielderSelect" name="rightMidfielder" class="form-control">
+          <option th:each="midfielder : ${midfielders}" th:value="${midfielder.id}" th:text="${midfielder.name}"></option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="leftWingerSelect">Left winger:</label>
+        <select id="leftWingerSelect" name="leftWinger" class="form-control">
+          <option th:each="offence : ${offences}" th:value="${offence.id}" th:text="${offence.name}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="strikerSelect">Striker:</label>
+        <select id="strikerSelect" name="striker" class="form-control">
+          <option th:each="offence : ${offences}" th:value="${offence.id}" th:text="${offence.name}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="rightWingerSelect">Right winger:</label>
+        <select id="rightWingerSelect" name="rightWinger" class="form-control">
+          <option th:each="offence : ${offences}" th:value="${offence.id}" th:text="${offence.name}"></option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Team</button>
+    </form>
+
+    <div th:if="${error}" th:utext="${error}"
+         style="color:red;font-style:italic;"/>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

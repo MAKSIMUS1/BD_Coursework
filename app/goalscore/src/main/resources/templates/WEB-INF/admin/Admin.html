@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Admin Panel</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h1 class="display-4">Admin Panel</h1>
+        <p class="lead">Welcome to the administration panel. Perform various administrative tasks using the links below.</p>
+    </div>
+
+    <div class="list-group">
+        <a th:href="@{/admin/create-match}" class="list-group-item list-group-item-action">Create match</a>
+        <a th:href="@{/admin/create-team-application}" class="list-group-item list-group-item-action">Create team request</a>
+        <a th:href="@{/admin/create-team}" class="list-group-item list-group-item-action">Create team</a>
+        <a th:href="@{/admin/update-team}" class="list-group-item list-group-item-action">Update team</a>
+        <a th:href="@{/admin/delete-team}" class="list-group-item list-group-item-action">Delete team</a>
+        <a th:href="@{/admin/create-player}" class="list-group-item list-group-item-action">Create player</a>
+        <a th:href="@{/admin/update-player}" class="list-group-item list-group-item-action">Update player</a>
+        <a th:href="@{/admin/delete-player}" class="list-group-item list-group-item-action">Delete player</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

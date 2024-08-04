@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Team Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${team.name}"></h5>
+            <img th:src="@{'/static/images/team_' + ${team.id} + '.png'}" onerror="this.src='/static/images/no_image.png';" alt="Team Image">
+            <p class="card-text">Area: <span th:text="${area.name}"></span></p>
+            <img class="player-nationality-image" th:src="'/static/images/Nations/'+ ${area.name} +'.png'" onerror="this.src='/static/images/no_image.png';"/>
+            <p class="card-text">Short Name: <span th:text="${team.short_name}"></span></p>
+            <p class="card-text">Tla: <span th:text="${team.tla}"></span></p>
+            <p class="card-text">Address: <span th:text="${team.address}"></span></p>
+            <p class="card-text">Website: <span th:text="${team.website}"></span></p>
+            <p class="card-text">Founded: <span th:text="${team.founded}"></span></p>
+            <p class="card-text">Colors: <span th:text="${team.club_colors}"></span></p>
+            <button class="btn btn-primary" th:onclick="'addToFavorites(' + ${team.id} + ')'" type="button">
+                Add to Favorites
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    function addToFavorites(teamId) {
+        const url = "/favorite/addToFavoritesTeam";
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ teamId: teamId }),
+        };
+
+        fetch(url, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}.`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                console.error('Response Text:', error.responseText);
+            });
+    }
+</script>
+
+</body>
+</html>

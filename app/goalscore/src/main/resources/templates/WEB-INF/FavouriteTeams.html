@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite Teams</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Favorite Teams</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Short Name</th>
+            <th>Tla</th>
+            <th>Address</th>
+            <th>Website</th>
+            <th>Founded</th>
+            <th>Club Colors</th>
+            <th>Area Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="team : ${favourite_teams}">
+            <td>
+                <a th:href="@{'/team/' + ${team.id}}" th:text="${team.name}"/>
+            </td>
+            <td th:text="${team.short_name}"></td>
+            <td th:text="${team.tla}"></td>
+            <td th:text="${team.address}"></td>
+            <td th:text="${team.website}"></td>
+            <td th:text="${team.founded}"></td>
+            <td th:text="${team.club_colors}"></td>
+            <td th:text="${team.area_name}"></td>
+
+            <td>
+                <button class="btn btn-danger" th:onclick="'removeFromFavorites(' + ${team.id} + ')'">Remove</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function removeFromFavorites(teamId) {
+        const url = `/favorite/removeFromFavoritesTeam`;
+
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ teamId: teamId }),
+        };
+
+        fetch(url, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}.`);
+                }
+                console.log('Team removed from favorites successfully');
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
